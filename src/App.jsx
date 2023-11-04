@@ -1,16 +1,10 @@
-import MainContext from './MainContext';
-import { useEffect, useState } from 'react';
-import Content from './components/Content';
-import Sidebar from './components/Sidebar';
-import BrandsData from '../src/brands.json';
-import Copied from './components/Copied';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  BrowserRouter,
-} from 'react-router-dom';
-import Collection from './components/Collection';
+import MainContext from "./MainContext";
+import { useEffect, useState } from "react";
+import Sidebar from "./components/Sidebar";
+import BrandsData from "../src/brands.json";
+import Copied from "./components/Copied";
+import RouterProviderLayout from "./components/router-provider/RouterProviderLayout";
+
 function App() {
   const brandsArray = [];
   Object.keys(BrandsData).map((key) => brandsArray.push(BrandsData[key]));
@@ -18,7 +12,7 @@ function App() {
   const [brands, setBrands] = useState(brandsArray);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [copied, setCopied] = useState(false);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     console.log(selectedBrands);
@@ -61,16 +55,7 @@ function App() {
       <MainContext.Provider value={data}>
         {copied && <Copied color={copied} />}
         <Sidebar />
-        <Router>
-          <Switch>
-            <Route path='/'>
-              <Content />
-            </Route>
-            <Route path='/collection/:slugs'>
-              <Collection />
-            </Route>
-          </Switch>
-        </Router>
+        <RouterProviderLayout />
       </MainContext.Provider>
     </>
   );
