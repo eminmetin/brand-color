@@ -3,6 +3,7 @@ import MainContext from '../MainContext';
 import { SlClose } from 'react-icons/sl';
 import { MdFileDownload } from 'react-icons/md';
 import { FaLink } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Download() {
   const { selectedBrands, brands, setSelectedBrands } = useContext(MainContext);
@@ -76,13 +77,9 @@ function Download() {
         <a download={`brands.${cssMethod}`} href={downloadURL}>
           <MdFileDownload />
         </a>
-        <button
-          onClick={() => {
-            getLink();
-          }}
-        >
+        <Link to={`${`/collection/${selectedBrands.join()}`}`}>
           <FaLink />
-        </button>
+        </Link>
       </div>
       <div className='selected'>
         <button

@@ -14,16 +14,9 @@ function Content() {
       </header>
       <section className='brands'>
         {brands.map((brand, index) => (
-          <>
-            <LazyLoad
-              placeholder='Yükleniyor'
-              once={true}
-              overflow={true}
-              key={brand.slug}
-            >
-              <Brand key={index} brand={brand} />
-            </LazyLoad>
-          </>
+          <LazyLoad threshold={1} height={120} key={index}>
+            <Brand brand={brand} />
+          </LazyLoad>
         ))}
       </section>
     </main>

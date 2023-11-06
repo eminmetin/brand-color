@@ -1,17 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Content from "../Content";
-import Collection from "./../Collection";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Content from '../Content';
+import Collection from './../Collection';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Content />,
-    children: [
-      {
-        path: "aliveli",
-        element: <Collection />,
-      },
-    ],
+    children: [],
+  },
+  {
+    path: '/collection/:slugs',
+    element: <Collection />,
   },
 ]);
 
